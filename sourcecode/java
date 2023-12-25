@@ -1,1 +1,24 @@
 
+/*provider "aws" {
+  region  = "us-west-2"
+  profile =  "dev"
+  alias   = "or"
+}*/
+
+module "dev-or" {
+  source = "../../modules/main"
+
+  providers = {
+    aws = "aws.or"
+  }
+
+  ami_id            = "ami-08909215e2a91b4e9"
+  instance_type     = "t3.medium"
+  ami_purpose       = "lpass"
+  root_volume_size  = "50"
+  target_tag_keys   = ["TechnologyCode"]
+  target_tag_values = ["lpass"]
+  aws_profile       = "dev"
+  developer_name    = ""
+  
+}
